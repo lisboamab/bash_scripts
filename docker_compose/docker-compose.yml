@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  webserver:
+    
+    image: httpd:alpine
+    
+    container_name: webserver
+    
+    volumes:
+      - ./app/landing-page-iracema-bot/:/usr/local/apache2/htdocs/
+    
+    restart: always
+
+    ports:
+      - "8080:80"
+
+    networks:
+      - webserver-frontend
+
+networks:
+  webserver-frontend:
+    driver: bridge
